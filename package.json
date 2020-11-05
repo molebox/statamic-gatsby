@@ -1,0 +1,25 @@
+{
+  "name": "statamic-gatsby",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "pretty": "prettier --write \"src/**/*js\"",
+    "z": "gatsby clean && gatsby develop"
+  },
+  "dependencies": {
+    "@chakra-ui/core": "^1.0.0-rc.8",
+    "framer-motion": "^2.9.4",
+    "gatsby": "^2.25.2",
+    "gatsby-source-statamic": "^0.1.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-markdown": "^5.0.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.1.2"
+  }
+}

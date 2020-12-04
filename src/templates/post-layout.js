@@ -4,8 +4,7 @@ import { Container, Text, Image, Link, Flex } from '@chakra-ui/core';
 import ReactMarkdown from 'react-markdown/with-html';
 
 const PostLayout = ({ data, pageContext }) => {
-  const { title, content, images } = data.collectionPosts;
-  const { permalink } = images[0];
+  const { title, content, image } = data.statamicDataJson;
   const { previous, next } = pageContext;
 
   return (
@@ -13,7 +12,7 @@ const PostLayout = ({ data, pageContext }) => {
       <Text as="h1" fontSize="2xl" my={5}>
         {title}
       </Text>
-      <Image my={6} src={permalink} alt={title} />
+      <Image my={6} src={image} alt={title} />
       <ReactMarkdown source={content} escapeHtml={false} />
       <Flex mt={6} w="100%" borderTop="solid 1px" p={3}>
         <Flex w="100ch" justify="space-evenly">
@@ -38,13 +37,11 @@ export default PostLayout;
 
 export const query = graphql`
   query PostBySlug($slug: String!) {
-    collectionPosts(slug: { eq: $slug }) {
+    statamicDataJson(slug: { eq: $slug }) {
       content
       title
       slug
-      images {
-        permalink
-      }
+      image
     }
   }
 `;

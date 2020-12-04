@@ -14,7 +14,9 @@
     "@chakra-ui/core": "^1.0.0-rc.8",
     "framer-motion": "^2.9.4",
     "gatsby": "^2.25.2",
+    "gatsby-source-filesystem": "^2.7.0",
     "gatsby-source-statamic": "^0.1.1",
+    "gatsby-transformer-json": "^2.7.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^5.0.2"

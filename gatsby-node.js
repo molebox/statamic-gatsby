@@ -8,25 +8,24 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allCollectionPosts {
+      allStatamicDataJson {
         nodes {
-          slug
           title
+          image
+          slug
           content
-          images {
-            permalink
-          }
         }
       }
     }
   `).then((result) => {
+    console.log({result})
     // If we get any errors throw them back at'cha
     if (result.errors) {
       throw result.errors;
     }
 
     // Grab the posts array
-    const posts = result.data.allCollectionPosts.nodes;
+    const posts = result.data.allStatamicDataJson.nodes;
 
     // Loop through the posts and create the post pages
     posts.forEach((post, index) => {

@@ -7,5 +7,13 @@ module.exports = {
           collections: [`posts`],
         },
       },
+      'gatsby-transformer-json',
+      {
+          resolve: 'gatsby-source-filesystem',
+          options: {
+            path: 'data',
+            name: 'data'
+          },
+      },
     ],
   };

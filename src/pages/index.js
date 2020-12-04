@@ -10,7 +10,7 @@ import {
 import { graphql, Link as GatsbyLink } from 'gatsby';
 
 const Index = ({ data }) => {
-  const posts = data.allCollectionPosts.nodes;
+  const posts = data.allStatamicDataJson.nodes;
 
   return (
     <Container h="100vh" centerContent>
@@ -42,7 +42,7 @@ export default Index;
 
 export const query = graphql`
   query IndexQuery {
-    allCollectionPosts(sort: { fields: [title], order: ASC }) {
+    allStatamicDataJson(sort: { fields: [title], order: ASC }) {
       nodes {
         slug
       }

@@ -25,8 +25,8 @@ const Index = ({ data }) => {
           Statamic Blog
         </Text>
         <UnorderedList>
-          {posts.map((post) => (
-            <ListItem>
+          {posts.map((post, index) => (
+            <ListItem key={post.slug + index}>
               <Link as={GatsbyLink} to={post.slug}>
                 To {post.slug}
               </Link>
@@ -42,7 +42,7 @@ export default Index;
 
 export const query = graphql`
   query IndexQuery {
-    allStatamicDataJson(sort: { fields: [title], order: ASC }) {
+    allStatamicDataJson {
       nodes {
         slug
       }

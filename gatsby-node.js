@@ -9,11 +9,21 @@ exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     {
       allStatamicDataJson {
-        nodes {
-          title
-          image
-          slug
-          content
+        edges {
+          node {
+            content
+            image
+            slug
+            title
+          }
+          next {
+            slug
+            title
+          }
+          previous {
+            slug
+            title
+          }
         }
       }
     }
@@ -25,21 +35,18 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     // Grab the posts array
-    const posts = result.data.allStatamicDataJson.nodes;
+    const posts = result.data.allStatamicDataJson.edges;
 
     // Loop through the posts and create the post pages
-    posts.forEach((post, index) => {
-      // Get the previous and next posts so that we can navigate between them
-      const previous = index === post.length - 1 ? null : posts[index + 1];
-      const next = index === 0 ? null : posts[index - 1];
+    posts.forEach(({node, next, previous}) => {
       // Create the page using the slug
       createPage({
-        path: post.slug,
+        path: node.slug,
         component: postLayoutTemplate,
         context: {
-          slug: post.slug,
-          previous,
-          next,
+          slug: node.slug,
+          previous: previous,
+          next: next,
         },
       });
     });
